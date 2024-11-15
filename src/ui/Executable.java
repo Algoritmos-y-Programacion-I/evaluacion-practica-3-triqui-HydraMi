@@ -20,10 +20,15 @@ public class Executable {
 
         while (!flag) {
 
-            System.out.println("\n\nBienvenido al menu:\n");
-            System.out.println("Opciones:\n" + "1. Imprimir tablero \n" + "2. Jugada de la máquina \n"
-                    + "3. Jugada de humano \n" + "4. Verificar ganador \n" + "5. Salir del programa \n");
+            System.out.println("\n\nBienvenido al menu del juego Triqui o Tres en raya:\n");
+            System.out.println("Opciones:\n" + 
+                                "1. Imprimir tablero \n" + 
+                                "2. Jugada de la máquina \n"+
+                                "3. Jugada de humano \n" +
+                                "4. Verificar ganador \n" +
+                                "5. Salir del programa \n");
 
+            System.out.print("Ingresa tu opcion: ");
             int option = reader.nextInt();
             reader.nextLine();
 
@@ -64,15 +69,39 @@ public class Executable {
 
     private void jugadaMaquina() {
         cont.jugadaAleatoria();
-        System.out.println("La máquina ha realizado su jugada.");
+        System.out.println("La maquina ha hecho su jugada");
         imprimirTablero();
     }
 
     private void jugadaHumano() {
-        // Implementación de jugada de humano
+        System.out.println("Recuerde ingresar la fila (0 a 2) de arriba hacia abajo y columna (0 a 2) de derecha a izquierda de su jugada:");
+        System.out.print("Ingresa la fila: ");
+        int fila = reader.nextInt();
+        System.out.print("Ingresa la columna: ");
+        int columna = reader.nextInt();
+        reader.nextLine();
+
+        if (cont.realizarJugadaHumano(fila, columna)) {
+            System.out.println("Jugada realizada con exito.");
+        }   
+        else {
+            System.out.println("Posicion invalida, por favor intente nuevamente.");
+        }
+        imprimirTablero();
     }
 
     private void validarGanador() {
-        // Implementación de la validación si alguien ya ganó el triqui
+        String ganador = cont.verificarGanador();
+        if (ganador != null) {
+            System.out.println("El ganador es: " + ganador);
+            flag = true;  
+        } 
+        else if (cont.tableroLleno()) {
+            System.out.println("Es un empate");
+            flag = true; 
+        } 
+        else {
+            System.out.println("\nNo hay ganador por ahora");
+        }
     }
 }
