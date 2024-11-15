@@ -74,8 +74,8 @@ public class Executable {
     }
 
     private void jugadaHumano() {
-        System.out.println("Recuerde ingresar la fila (0 a 2) de arriba hacia abajo y columna (0 a 2) de derecha a izquierda de su jugada:");
-        System.out.print("Ingresa la fila: ");
+        System.out.println("\n Recuerde ingresar la fila (0 a 2) de arriba hacia abajo y columna (0 a 2) de derecha a izquierda de su jugada:");
+        System.out.print("\n Ingresa la fila: ");
         int fila = reader.nextInt();
         System.out.print("Ingresa la columna: ");
         int columna = reader.nextInt();
@@ -93,11 +93,11 @@ public class Executable {
     private void validarGanador() {
         String ganador = cont.verificarGanador();
         if (ganador != null) {
-            System.out.println("El ganador es: " + ganador);
+            System.out.println("\nEl ganador es: " + ganador);
             flag = true;  
         } 
         else if (cont.tableroLleno()) {
-            System.out.println("Es un empate");
+            System.out.println("\nEs un empate");
             flag = true; 
         } 
         else {
